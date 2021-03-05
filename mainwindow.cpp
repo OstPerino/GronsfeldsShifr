@@ -46,12 +46,21 @@ void MainWindow::on_pushButton_clicked()
     {
         //! Find out an index of current element in alphabet
         int index = contain(userInput[i], lowerCase, upperCase);
-        int newKey = key[i].digitValue();
+        //! Find out a new index for next element
+        int newKey = key[i+8].digitValue();
 
-        result.append(lowerCase[newKey + index]);
+        if (userInput[i].isLower())
+            result.append(lowerCase[newKey + index]);
+        else
+            result.append(upperCase[newKey + index]);
     }
 
     ui->resutlEdit->setText(result);
+    //! s: my fat dog k: 143 - interesting example
+    //! i am nikita - 121
+    //! dog like jump - 13
+    //! symbols are here - 9
+    //! the end - 9
 }
 
 int MainWindow::contain(QChar charTmp, const QString upperCase, const QString lowerCase)
