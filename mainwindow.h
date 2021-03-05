@@ -14,7 +14,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    int contain(QChar charTmp, const QString upperCase, const QString lowerCase);
 private slots:
     void on_pushButton_clicked();
 
