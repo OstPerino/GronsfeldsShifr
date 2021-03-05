@@ -47,9 +47,9 @@ void MainWindow::on_pushButton_clicked()
         //! Find out an index of current element in alphabet
         int index = contain(userInput[i], lowerCase, upperCase);
         //! Find out a new index for next element
-        int newKey = key[i+8].digitValue();
+        int newKey = key[i].digitValue();
 
-        if (userInput[i].isLower())
+        if (userInput[i] == " " || userInput[i].isLower())
             result.append(lowerCase[newKey + index]);
         else
             result.append(upperCase[newKey + index]);
