@@ -44,7 +44,11 @@ void MainWindow::on_pushButton_clicked()
     //! Main loop for coding
     for (int i = 0; i < userInput.length(); ++i)
     {
+        //! Find out an index of current element in alphabet
         int index = contain(userInput[i], lowerCase, upperCase);
+        int newKey = key[i].digitValue();
+
+        result.append(lowerCase[newKey + index]);
     }
 
     ui->resutlEdit->setText(result);
