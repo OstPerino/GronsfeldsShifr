@@ -44,15 +44,12 @@ void MainWindow::on_pushButton_clicked()
     //! Main loop for coding
     for (int i = 0; i < userInput.length(); ++i)
     {
-        //! Find out an index of current element in alphabet
-        int index = contain(userInput[i], lowerCase, upperCase);
-        //! Find out a new index for next element
+        int newIndex = userInput[i].unicode();
         int newKey = key[i].digitValue();
 
-        if (userInput[i] == " " || userInput[i].isLower())
-            result.append(lowerCase[newKey + index]);
-        else
-            result.append(upperCase[newKey + index]);
+        int resultIndex = newIndex + newKey;
+
+        result.append(QChar(resultIndex));
     }
 
     ui->resutlEdit->setText(result);
