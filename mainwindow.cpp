@@ -3,6 +3,7 @@
 
 #include <QMessageBox>
 #include <QString>
+#include <QIcon>
 #include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -10,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Gronsfeld Shifr");
 }
 
 MainWindow::~MainWindow()
