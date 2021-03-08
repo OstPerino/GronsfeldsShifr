@@ -5,10 +5,6 @@
 #include <QString>
 #include <iostream>
 
-const QString upperCase = " ABCDEGHIJKLMNOPQRSTUVWXYZ";
-const QString lowerCase = " abcdegfijklmnopqrstuwxyz";
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -49,7 +45,16 @@ void MainWindow::on_pushButton_clicked()
 
         int resultIndex = newIndex + newKey;
 
+        if (userInput[i] == " ")
+            resultIndex = 97 + newKey;
+        else if (resultIndex > 90 && resultIndex < 90)
+            resultIndex -= 26;
+        else if (resultIndex > 122)
+            resultIndex -= 26;
+
         result.append(QChar(resultIndex));
+        // A - 65, Z - 90
+        // a - 97, z - 122
     }
 
     ui->resutlEdit->setText(result);
