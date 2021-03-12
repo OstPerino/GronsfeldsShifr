@@ -75,3 +75,43 @@ int MainWindow::contain(QChar charTmp, const QString upperCase, const QString lo
             return i;
     return -1;
 }
+
+void MainWindow::on_decodeButton_clicked()
+{
+    //! Making key and userInput from ui form
+    QString key = ui->keyEdit->text();
+    QString userInput = ui->resutlEdit->text();
+    QString result = "";
+
+    //! Count for making key
+    int count = 0;
+
+    //! Making new key to know what needs to code other symbols
+    while (key.length() < userInput.length())
+    {
+        key.append(key[count]);
+        count++;
+        if (count == key.length())
+            count = 0;
+    }
+
+    //! Main loop for coding
+    for (int i = 0; i < userInput.length(); ++i)
+    {
+        int newIndex = userInput[i].unicode();
+        int newKey = key[i].digitValue();
+
+        int resultIndex = newIndex - newKey;
+
+//        if (resultIndex > 90 && resultIndex <= 96)
+//            resultIndex -= 26;
+//        else if (resultIndex > 122)
+//            resultIndex -= 26;
+
+        result.append(QChar(resultIndex));
+        // A - 65, Z - 90
+        // a - 97, z - 122
+    }
+
+    ui->resutlEdit->setText(result);
+}
