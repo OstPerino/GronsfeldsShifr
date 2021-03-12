@@ -3,17 +3,15 @@
 
 #include <QMessageBox>
 #include <QString>
+#include <QIcon>
 #include <iostream>
-
-const QString upperCase = " ABCDEGHIJKLMNOPQRSTUVWXYZ";
-const QString lowerCase = " abcdegfijklmnopqrstuwxyz";
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Gronsfeld Shifr");
 }
 
 MainWindow::~MainWindow()
@@ -44,15 +42,21 @@ void MainWindow::on_pushButton_clicked()
     //! Main loop for coding
     for (int i = 0; i < userInput.length(); ++i)
     {
-        //! Find out an index of current element in alphabet
-        int index = contain(userInput[i], lowerCase, upperCase);
-        //! Find out a new index for next element
+        int newIndex = userInput[i].unicode();
         int newKey = key[i].digitValue();
 
-        if (userInput[i] == " " || userInput[i].isLower())
-            result.append(lowerCase[newKey + index]);
-        else
-            result.append(upperCase[newKey + index]);
+        int resultIndex = newIndex + newKey;
+
+        if (userInput[i] == " ")
+            resultIndex = 97 + newKey;
+        else if (resultIndex > 90 && resultIndex < 90)
+            resultIndex -= 26;
+        else if (resultIndex > 122)
+            resultIndex -= 26;
+
+        result.append(QChar(resultIndex));
+        // A - 65, Z - 90
+        // a - 97, z - 122
     }
 
     ui->resutlEdit->setText(result);

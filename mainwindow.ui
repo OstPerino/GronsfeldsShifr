@@ -50,12 +50,25 @@
      </widget>
     </item>
     <item row="2" column="3">
-     <widget class="QLineEdit" name="resutlEdit"/>
+     <widget class="QLineEdit" name="resutlEdit">
+      <property name="minimumSize">
+       <size>
+        <width>178</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
     <item row="3" column="0" colspan="4">
      <widget class="QPushButton" name="pushButton">
       <property name="text">
        <string>Code</string>
+      </property>
+      <property name="shortcut">
+       <string>Return</string>
       </property>
      </widget>
     </item>
@@ -73,6 +86,12 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>keyEdit</tabstop>
+  <tabstop>stringEdit</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>resutlEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
