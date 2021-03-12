@@ -50,7 +50,7 @@ void MainWindow::on_pushButton_clicked()
 
         if (userInput[i] == " ")
             resultIndex = 97 + newKey;
-        else if (resultIndex > 65 && resultIndex < 90)
+        else if (resultIndex > 90 && resultIndex <= 96)
             resultIndex -= 26;
         else if (resultIndex > 122)
             resultIndex -= 26;
